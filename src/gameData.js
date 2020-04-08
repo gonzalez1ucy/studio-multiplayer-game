@@ -1,6 +1,7 @@
 import ChatRoom from './games/chatroom/ChatRoom.js';
 import CookieClicker from "./games/cookieClicker/CookieClicker.js";
 import GoogleGossip from "./games/googlegossip/GoogleGossip.js";
+import GuessThatTune from "./games/guessThatTune/GuessThatTune.js";
 import Mafia from './games/mafia/Mafia.js';
 import Multiplication from './games/multiplication/Multiplication.js';
 import Pokemon from './games/pokemon/Pokemon.js'
@@ -15,6 +16,15 @@ import fight from "./games/fight/fight.js";
 import uno from './games/uno/uno.js';
 
 const gameData = {
+
+  guessThatTune: {
+    title: "Guess that tune",
+    authors: "Amner, Ryan, Lucy, Irwin, Zoe",
+    description: "A music trivia game where the songs become more obscure as you continue playing",
+    minUsers: 2,
+    maxUsers: 20,
+    component: GuessThatTune
+    },
 
   chatroom: {
     title: "Chat Room",
