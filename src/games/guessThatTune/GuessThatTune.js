@@ -3,9 +3,18 @@ import React from "react";
 import UserApi from "../../UserApi.js";
 
 export default class GuessThatTune extends GameComponent {
+  constructor(props) {
+    super(props);
+    this.state = { userID: null };
+  }
+
+  onSessionDataChanged(data) {
+    console.log("Data changed!", data);
+  }
+
   render() {
     var id = this.getSessionId();
-    var users = this.getSessionUserIds().map((user_id) => (
+    var users = this.getSessionUserIds().map(user_id => (
       <li key={user_id}>
         {UserApi.getName(user_id)}
         <img
@@ -21,6 +30,17 @@ export default class GuessThatTune extends GameComponent {
       this.getMyUserId() === this.getSessionCreatorUserId()
         ? `Hello ${user} you are the Host`
         : `Hello ${user} - Thanks for playing!`;
+
+    var databaseState = {
+      userID: user
+      // score
+    };
+
+    this.getSessionDatabaseRef().set(databaseState, error => {
+      if (error) {
+        console.error("Error updating GuessThatTune state", error);
+      }
+    });
 
     return (
       <div>
